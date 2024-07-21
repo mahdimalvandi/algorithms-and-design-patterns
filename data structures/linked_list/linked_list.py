@@ -77,13 +77,26 @@ class LinkedList:
 
         self.head = pre
 
+    def has_loop(self) -> bool:
+        slow = fast = self.head
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        else:
+            return False
+
+
 
 ll = LinkedList()
 
-ll.push(5)
-ll.push(8)
-ll.push(2)
-ll.push(6)
-print(ll)
+f = Node(16)
+f.next = Node(34)
+f.next.next = Node(523)
+f.next.next.next = Node(12)
 
-print(reversed(ll))
+f.next.next.next.next = f.next
+ll.head = f
+
+print(ll.has_loop())
