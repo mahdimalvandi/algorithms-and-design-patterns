@@ -4,10 +4,17 @@ length = 10
 
 _list = [rnd(0, length) for i in range(length)]
 
-for i in range(length-1):
+for i in range(length):
     _min = i
-    for j in range(i+1, length):
+    for j in range(i, length):
         if _list[_min] > _list[j]:
-            _list[_min], _list[j] = _list[j], _list[_min]
+            _min = j
+        
+    _list[i], _list[_min] =  _list[_min],_list[i]
 
-print(_list)
+
+
+
+
+
+
